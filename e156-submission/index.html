@@ -1,171 +1,527 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CT.gov Probable ACT/FDAAA Debt</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2710%27%20fill%3D%27%23111111%27/%3E%3Ctext%20x%3D%2732%27%20y%3D%2739%27%20text-anchor%3D%27middle%27%20font-family%3D%27Georgia%27%20font-size%3D%2728%27%20fill%3D%27%23f4eee3%27%3ECT%3C/text%3E%3C/svg%3E">
-  <style>
-    :root{
-      --bg:#f8f5ef;
-      --paper:#fffdfa;
-      --ink:#111;
-      --muted:#5d584f;
-      --line:#ddd4c6;
-      --line-strong:#b7ab99;
-      --accent:#326891;
-      --gold:#8b6914;
-      --sans:"Segoe UI","Helvetica Neue",Arial,sans-serif;
-      --serif:Georgia,"Times New Roman",serif;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:var(--serif);
-      background:
-        radial-gradient(circle at top left, rgba(50,104,145,.10), transparent 28%),
-        linear-gradient(180deg, #fcfbf7 0%, var(--bg) 100%);
-      color:var(--ink);
-      line-height:1.65;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-    }
-    a{color:var(--accent);text-decoration:none}
-    .page{max-width:1120px;margin:0 auto;padding:20px 18px 48px}
-    .masthead{
-      display:flex;justify-content:space-between;gap:18px;align-items:end;
-      border-top:1px solid var(--line-strong);border-bottom:3px double var(--line);
-      padding:10px 0 18px;margin-bottom:24px
-    }
-    .brand{font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.03em}
-    .brand-meta{max-width:40ch;font:11px/1.6 var(--sans);text-transform:uppercase;letter-spacing:.16em;color:var(--muted);text-align:right}
-    .hero{
-      background:rgba(255,255,255,.92);border:1px solid var(--line);border-top:4px solid var(--ink);
-      padding:32px clamp(18px,4vw,40px);margin-bottom:24px;box-shadow:0 16px 38px rgba(17,17,17,.045)
-    }
-    .eyebrow{font:700 11px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-    h1{font-size:clamp(38px,6vw,68px);line-height:.98;letter-spacing:-.05em;margin:0 0 14px;max-width:13ch}
-    .lede{font-size:clamp(18px,2.2vw,24px);line-height:1.62;color:#474037;max-width:60rem;margin:0}
-    .hero-rail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:24px;padding-top:16px;border-top:1px solid var(--line)}
-    .hero-rail div{background:rgba(255,255,255,.7);border-top:1px solid var(--line-strong);padding:12px 14px;font:11px var(--sans);text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
-    .grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,.95fr);gap:24px}
-    .card{background:rgba(255,255,255,.93);border:1px solid var(--line);padding:22px 22px 24px;box-shadow:0 14px 28px rgba(17,17,17,.04)}
-    .section-title{font:700 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-bottom:10px;border-bottom:1px solid var(--line);margin:0 0 16px}
-    .body-copy{font-size:clamp(22px,2.1vw,30px);line-height:1.78;max-width:30ch;margin:0}
-    .body-copy::first-letter{float:left;font-size:72px;line-height:.85;padding-right:10px;padding-top:8px;font-weight:700;color:var(--gold)}
-    .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 24px}
-    .metric{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:16px;border-radius:8px}
-    .metric-label{font:700 10px var(--sans);letter-spacing:.15em;text-transform:uppercase;color:#777;margin-bottom:8px}
-    .metric-value{font-size:30px;font-weight:700;line-height:1.05}
-    .metric-note{font:12px var(--sans);color:#888;margin-top:6px}
-    .note-grid{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font:13px var(--sans);color:#444}
-    .note-grid dt{font-weight:700;color:#222}
-    .bullet-list{display:grid;gap:10px;padding-left:18px}
-    .links{display:grid;gap:12px}
-    .link-card{display:block;padding:15px 16px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);font:600 15px var(--sans);color:#1b1b1b;border-radius:8px}
-    .chart-wrap{margin:18px 0 26px}
-    .chart-caption{font:12px var(--sans);color:#666;margin-top:10px}
-    .kicker{font:700 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
-    .story-block{margin-bottom:26px}
-    .footer{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);font:12px var(--sans);color:#8f887e}
-    .footer a{color:var(--accent)}
-    @media (max-width:900px){
-      .grid{grid-template-columns:1fr}
-      .hero-rail{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .brand-meta{text-align:left}
-      .masthead{display:block}
-    }
-    @media (max-width:640px){
-      .page{padding:14px 12px 40px}
-      .hero{padding:24px 18px}
-      .hero-rail{grid-template-columns:1fr}
-      .body-copy{font-size:22px}
-    }
-    
-    .series-bar{
-      display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-      padding:12px 14px;margin:0 0 18px;background:rgba(255,255,255,.88);
-      border:1px solid var(--line);box-shadow:0 10px 24px rgba(17,17,17,.03)
-    }
-    .series-label{
-      font:700 10px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)
-    }
-    .series-nav{display:flex;gap:10px;flex-wrap:wrap}
-    .series-chip{
-      display:inline-block;padding:9px 12px;border:1px solid var(--line);
-      background:#fff;font:700 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#222;border-radius:999px
-    }
-    .series-chip.current{border-color:var(--ink);background:#f3ede2}
-    .hero-links{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 8px}
-    .hero-link{
-      display:inline-block;padding:12px 16px;background:#fff;border:1px solid var(--line);
-      font:700 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#222;border-radius:999px
-    }
-    .hero-link.primary{background:var(--ink);border-color:var(--ink);color:#fff}
-    .chapter-intro{font:15px/1.8 var(--sans);color:#4f4a42;max-width:70ch;margin:0 0 18px}
-    .pull-quote{
-      margin:18px 0 22px;padding:18px 20px;background:linear-gradient(180deg,#fcfaf5 0%,#f4eee3 100%);
-      border-top:3px solid var(--ink);border-bottom:1px solid var(--line);box-shadow:0 12px 24px rgba(17,17,17,.03)
-    }
-    .pull-quote-text{
-      font-size:clamp(24px,3vw,36px);line-height:1.28;letter-spacing:-.03em;margin:0;color:#1a1814
-    }
-    .pull-quote-meta{
-      margin-top:10px;font:700 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)
-    }
-    .section-break{
-      display:flex;align-items:center;gap:12px;margin:24px 0 18px;color:#6a645b;
-      font:700 10px var(--sans);letter-spacing:.18em;text-transform:uppercase
-    }
-    .section-break::before,.section-break::after{content:"";height:1px;background:var(--line-strong);flex:1}
-    .annotation{
-      margin-top:12px;padding:12px 14px;background:#faf6ee;border-left:4px solid var(--gold);
-      font:13px/1.7 var(--sans);color:#4b463e
-    }
-    .series-grid{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:18px
-    }
-    .series-card{
-      display:block;padding:16px;background:#fff;border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:8px
-    }
-    .series-card-kicker{
-      font:700 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px
-    }
-    .series-card-title{font-size:20px;line-height:1.15;color:#1b1b1b;margin:0 0 8px}
-    .series-card-copy{font:13px/1.7 var(--sans);color:#5a544a;margin:0}
-    .quick-jump{display:grid;gap:10px;margin:14px 0 18px}
-    @media (max-width:640px){
-      .series-bar{padding:10px 12px}
-      .hero-links{display:grid;grid-template-columns:1fr}
-    }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CT.gov Probable ACT/FDAAA Debt — E156</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FDFCFA;--text:#1a1a1a;--text2:#555;--accent:#7A5A10;
+  --card:#F5F3EE;--border:#E5E0D6;--link:#2E6B8A;
+  --s1:#2E86C1;--s2:#28B463;--s3:#7D3C98;--s4:#CB4335;
+  --s5:#D68910;--s6:#148F77;--s7:#85929E
+}
+body{
+  font-family:Georgia,'Times New Roman',serif;
+  background:var(--bg);color:var(--text);line-height:1.7;
+  -webkit-font-smoothing:antialiased;padding:0
+}
+.page{max-width:780px;margin:0 auto;padding:3rem 2rem 4rem}
+
+/* ── Masthead ──────────────────────────────────── */
+.masthead{
+  text-align:center;padding:2rem 0 1.5rem;
+  border-bottom:3px double var(--border);margin-bottom:2.5rem
+}
+.masthead-label{
+  font-family:system-ui,-apple-system,sans-serif;font-size:.65rem;
+  font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.2rem
+}
+.masthead h1{font-size:2rem;font-weight:700;line-height:1.25;margin-bottom:.8rem}
+.masthead .byline{
+  font-family:system-ui,sans-serif;font-size:.85rem;color:var(--text2)
+}
+.masthead .byline a{color:var(--link);text-decoration:none}
+
+/* ── Body ──────────────────────────────────────── */
+.body-section{margin-bottom:3rem}
+.body-text{
+  font-size:1.18rem;line-height:2;text-align:justify;hyphens:auto;
+  margin-bottom:1.5rem
+}
+.body-text .s{
+  cursor:pointer;transition:background .2s;border-radius:3px;padding:1px 4px;
+  position:relative
+}
+.body-text .s:hover{background:rgba(0,0,0,.06)}
+.body-text .s[data-r="1"]:hover{background:rgba(46,134,193,.12)}
+.body-text .s[data-r="2"]:hover{background:rgba(40,180,99,.12)}
+.body-text .s[data-r="3"]:hover{background:rgba(125,60,152,.12)}
+.body-text .s[data-r="4"]:hover{background:rgba(203,67,53,.15)}
+.body-text .s[data-r="5"]:hover{background:rgba(214,137,16,.12)}
+.body-text .s[data-r="6"]:hover{background:rgba(20,143,119,.12)}
+.body-text .s[data-r="7"]:hover{background:rgba(133,146,158,.12)}
+.body-text .s::after{
+  content:attr(data-label);position:absolute;bottom:calc(100% + 4px);
+  left:50%;transform:translateX(-50%);font-family:system-ui,sans-serif;
+  font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:#fff;padding:3px 8px;border-radius:3px;white-space:nowrap;
+  opacity:0;transition:opacity .15s;pointer-events:none;z-index:10
+}
+.body-text .s:hover::after{opacity:1}
+.body-text .s[data-r="1"]::after{background:var(--s1)}
+.body-text .s[data-r="2"]::after{background:var(--s2)}
+.body-text .s[data-r="3"]::after{background:var(--s3)}
+.body-text .s[data-r="4"]::after{background:var(--s4)}
+.body-text .s[data-r="5"]::after{background:var(--s5)}
+.body-text .s[data-r="6"]::after{background:var(--s6)}
+.body-text .s[data-r="7"]::after{background:var(--s7)}
+
+/* ── Sentence map ──────────────────────────────── */
+.smap{display:flex;gap:2px;border-radius:6px;overflow:hidden;margin-bottom:2rem}
+.smap-seg{
+  flex:1;padding:8px 4px;text-align:center;cursor:pointer;
+  color:#fff;transition:opacity .15s;font-family:system-ui,sans-serif;
+  font-size:.6rem;font-weight:700;letter-spacing:.04em
+}
+.smap-seg:hover{opacity:.8}
+
+/* ── Figures gallery ───────────────────────────── */
+.figures-section{margin-bottom:3rem}
+.figures-section h2{
+  font-family:system-ui,sans-serif;font-size:.7rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)
+}
+.fig-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+.fig-card{
+  background:#fff;border:1px solid var(--border);border-radius:8px;
+  overflow:hidden;transition:box-shadow .2s
+}
+.fig-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.fig-card img{width:100%;height:auto;display:block}
+.fig-card .fig-caption{
+  padding:.6rem .8rem;font-family:system-ui,sans-serif;font-size:.75rem;
+  color:var(--text2);border-top:1px solid var(--border)
+}
+
+/* ── App link ──────────────────────────────────── */
+.app-link-section{margin-bottom:3rem;text-align:center}
+.app-btn{
+  display:inline-block;padding:12px 32px;background:var(--accent);color:#fff;
+  font-family:system-ui,sans-serif;font-size:.9rem;font-weight:600;
+  text-decoration:none;border-radius:6px;transition:background .2s;
+  letter-spacing:.02em
+}
+.app-btn:hover{background:#6d5210}
+
+/* ── Notes ─────────────────────────────────────── */
+.notes-section{
+  background:var(--card);border-radius:8px;padding:1.5rem 1.8rem;
+  margin-bottom:2.5rem
+}
+.notes-section h2{
+  font-family:system-ui,sans-serif;font-size:.7rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:1rem
+}
+.notes-grid{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem}
+.notes-grid dt{
+  font-family:system-ui,sans-serif;font-size:.82rem;font-weight:600;color:var(--text)
+}
+.notes-grid dd{font-size:.85rem;color:var(--text2)}
+.notes-grid dd a{color:var(--link);text-decoration:none;word-break:break-all}
+
+/* ── References ────────────────────────────────── */
+.refs-section{margin-bottom:2.5rem}
+.refs-section h2{
+  font-family:system-ui,sans-serif;font-size:.7rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)
+}
+.refs-section ol{
+  font-family:system-ui,sans-serif;font-size:.82rem;color:var(--text2);
+  padding-left:1.2rem;line-height:1.8
+}
+
+/* ── Disclosure ────────────────────────────────── */
+.disclosure{
+  font-family:system-ui,sans-serif;font-size:.78rem;color:var(--text2);
+  line-height:1.7;padding:1.2rem 1.5rem;background:var(--card);
+  border-radius:8px;margin-bottom:2.5rem;border-left:3px solid var(--accent)
+}
+.disclosure strong{color:var(--text);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}
+
+/* ── Footer ────────────────────────────────────── */
+.footer{
+  padding-top:1.5rem;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem
+}
+.footer .meta{font-family:system-ui,sans-serif;font-size:.72rem;color:var(--text2)}
+.footer .meta .check{color:#28B463}
+.footer .actions{display:flex;gap:.5rem}
+.footer .actions button{
+  font-family:system-ui,sans-serif;font-size:.72rem;padding:6px 14px;
+  border:1px solid var(--border);border-radius:4px;background:#fff;
+  color:var(--text);cursor:pointer;transition:background .15s
+}
+.footer .actions button:hover{background:var(--card)}
+
+/* ── Print ─────────────────────────────────────── */
+@media print{
+  .smap,.footer .actions,.app-link-section,.skip-link{display:none!important}
+  .s::after{display:none!important}
+  body{padding:0;background:#fff}
+  .page{max-width:100%;padding:1rem}
+  .fig-card{break-inside:avoid}
+  .fig-card img{max-height:400px;object-fit:contain}
+  .refs-section{page-break-before:auto}
+}
+
+/* ── Mobile ────────────────────────────────────── */
+@media(max-width:640px){
+  .page{padding:1.5rem 1rem}
+  .masthead h1{font-size:1.5rem}
+  .body-text{font-size:1.05rem}
+  .fig-grid{grid-template-columns:1fr}
+  .smap-seg{font-size:.5rem;padding:6px 2px}
+}
+@media(max-width:400px){
+  .page{padding:1rem .7rem}
+  .masthead h1{font-size:1.2rem}
+  .body-text{font-size:.95rem}
+}
+
+/* ── Skip link ─────────────────────────────────── */
+.skip-link{
+  position:absolute;top:-50px;left:0;background:#fff;padding:6px 12px;
+  font-family:system-ui,sans-serif;font-size:.82rem;z-index:999;
+  border:1px solid var(--border);border-radius:4px
+}
+.skip-link:focus{top:8px;left:8px}
+
+/* ── Reduced motion ────────────────────────────── */
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
 </head>
 <body>
-  <div class="page">
-    <div class="masthead">
-      <div class="brand">CT.gov Probable ACT/FDAAA Debt</div>
-      <div class="brand-meta">2026-03-29 | full-registry ct.gov audit | plots, figures, and e156 bundle</div>
+<a href="#notes" class="skip-link">Skip to notes</a>
+<div class="page">
+
+  <header class="masthead">
+    <div class="masthead-label">E156 Micro-Paper</div>
+    <h1 id="title"></h1>
+    <div class="byline" id="byline"></div>
+  </header>
+
+  <section class="body-section">
+    <p class="body-text" id="body"></p>
+    <div class="smap" id="smap" role="group" aria-label="Sentence roles"></div>
+  </section>
+
+  <section class="figures-section" id="figures-section" style="display:none">
+    <h2>Figures</h2>
+    <div class="fig-grid" id="fig-grid"></div>
+  </section>
+
+  <section class="app-link-section" id="app-section" style="display:none">
+    <a class="app-btn" id="app-btn" target="_blank">Open Interactive App</a>
+  </section>
+
+  <section class="notes-section" id="notes">
+    <h2>Outside Notes</h2>
+    <dl class="notes-grid" id="notes-grid"></dl>
+  </section>
+
+  <section class="refs-section" id="refs-section" style="display:none">
+    <h2>References</h2>
+    <ol id="refs-list"></ol>
+  </section>
+
+  <section class="disclosure" id="disclosure" style="display:none">
+    <strong>AI Disclosure</strong><br><br>
+    <span id="disclosure-text"></span>
+  </section>
+
+  <footer class="footer">
+    <div class="meta">
+      <span id="wc"></span> words <span class="check" id="wc-check"></span> &middot;
+      7 sentences &middot; E156 v0.2
     </div>
-    <div class="series-bar">
-      <div class="series-label">Series</div>
-      <div class="series-nav"><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-industry-disclosure-gap/'>Industry</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-sponsor-class-hiddenness/'>Sponsor Classes</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-phase-reporting-gap/'>Phases</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-structural-missingness/'>Structural</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-evidence-visibility-gap/'>Visibility</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-completion-cohort-debt/'>Cohorts</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-condition-hiddenness-map/'>Conditions</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-sponsor-backlog-concentration/'>Concentration</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-rule-era-reporting-gap/'>Rule Eras</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-publication-undercount-audit/'>PubMed Audit</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-oncology-hiddenness/'>Oncology</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-cardiovascular-hiddenness/'>Cardiovascular</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-metabolic-hiddenness/'>Metabolic</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-enrollment-size-gap/'>Size</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-geography-scale-visibility/'>Geography</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-design-purpose-hiddenness/'>Purpose</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-completion-delay-debt/'>Delay</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-trial-architecture-gap/'>Architecture</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-intervention-type-gap/'>Interventions</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-country-reporting-map/'>Countries</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-stopped-trial-disclosure-gap/'>Stopped</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-outcome-density-gap/'>Outcomes</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-actual-field-discipline/'>Actual Fields</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-us-vs-global-gap/'>US vs Global</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-modality-sponsor-repeaters/'>Modality Sponsors</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-country-condition-hiddenness/'>Country x Condition</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-disease-geography-gap/'>Disease Geography</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-condition-sponsor-repeaters/'>Condition Sponsors</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-country-sponsor-repeaters/'>Country Sponsors</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-us-vs-exus-sponsor-classes/'>US vs Ex-US</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-industry-family-repeaters/'>Industry Families</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-risk-adjusted-hiddenness/'>Adjusted</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-overdue-results-clock/'>Clock</a><a class='series-chip' href='https://mahmood726-cyber.github.io/ctgov-publication-index-gap/'>Index Gap</a><a class='series-chip current' href='https://mahmood726-cyber.github.io/ctgov-probable-act-fdaaa-debt/'>ACT Debt</a></div>
+    <div class="actions">
+      <button onclick="copyBody(event)">Copy</button>
+      <button onclick="downloadJSON()">JSON</button>
+      <button onclick="window.print()">Print</button>
     </div>
-    <section class="hero">
-      <div class="eyebrow">E156 Micro-Paper</div>
-      <h1>CT.gov Probable ACT/FDAAA Debt</h1>
-      <p class="lede">A 156-word micro-paper on how much likely U.S.-nexus CT.gov reporting debt remains after older studies are filtered through conservative ACT-style proxy layers.</p>
-      <div class='hero-links'><a class='hero-link primary' href='https://mahmood726-cyber.github.io/ctgov-probable-act-fdaaa-debt/dashboard.html'>Open dashboard</a><a class='hero-link' href='https://mahmood726-cyber.github.io/ctgov-probable-act-fdaaa-debt/e156-submission/index.html'>Read E156 paper</a><a class='hero-link' href='https://mahmood726-cyber.github.io/ctgov-probable-act-fdaaa-debt/e156-submission/protocol.md'>Protocol</a><a class='hero-link' href='https://mahmood726-cyber.github.io/ctgov-hiddenness-atlas/'>Series hub</a></div>
-      <div class="hero-rail"><div>Strict layer</div><div>Broad layer</div><div>Old debt</div><div>Sponsor classes</div></div>
-    </section>
-    <div class="grid">
-      <main><article class='card'><h2 class='section-title'>Paper</h2><div class='quick-jump'><a class='link-card' href='https://mahmood726-cyber.github.io/ctgov-probable-act-fdaaa-debt/dashboard.html'>Open dashboard at root</a><a class='link-card' href='https://mahmood726-cyber.github.io/ctgov-probable-act-fdaaa-debt/e156-submission/index.html'>Read E156 micro-paper</a><a class='link-card' href='https://mahmood726-cyber.github.io/ctgov-probable-act-fdaaa-debt/e156-submission/protocol.md'>Open protocol</a><a class='link-card' href='https://mahmood726-cyber.github.io/ctgov-hiddenness-atlas/'>Open series hub</a></div><div class='pull-quote'><p class='pull-quote-text'>The regulated-looking subset is cleaner than the raw registry, but it is still far from clean.</p><div class='pull-quote-meta'>Reading note</div></div><p class='body-copy'>How large is the likely U.S.-nexus reporting debt once older CT.gov studies are filtered through strict and broad ACT-style sensitivity layers? We analysed 249,507 eligible older closed interventional studies from the March 29, 2026 full-registry snapshot. We created three proxy layers using recorded U.S. locations, intervention families, and phase exclusions within older closed interventional records: broad U.S. nexus, drug/bio non-phase1, and strict drug/bio/device U.S. nexus. The strict proxy contains 58,598 older studies, with 18,475 missing-results studies and a 31.5 percent no-results rate. Debt is still old inside that supposedly regulated core: mean unresolved time is 10.92 years beyond the two-year mark, and Pre-FDAAA strict-proxy cohorts remain 87.0 percent unresolved even after U.S.-nexus filtering. The regulatory backlog therefore sits far below the raw all-study rate but remains large, old, and institutionally distributed across OTHER, INDUSTRY, and government-linked slices. These layers are conservative proxies built from registry-visible fields, not formal ACT or FDAAA legal determinations or enforceability judgments.</p><div class='metrics'><div class='metric'><div class='metric-label'>Broad nexus</div><div class='metric-value'>46.5%</div><div class='metric-note'>No-results rate</div></div><div class='metric'><div class='metric-label'>Drug/Bio</div><div class='metric-value'>30.4%</div><div class='metric-note'>No-results rate</div></div><div class='metric'><div class='metric-label'>Strict network</div><div class='metric-value'>48.8%</div><div class='metric-note'>Highest large-class rate</div></div><div class='metric'><div class='metric-label'>Strict NIH debt</div><div class='metric-value'>17.28y</div><div class='metric-note'>Mean overdue years</div></div></div></article></main>
-      <aside class="card"><h2 class='section-title'>Outside Notes</h2><dl class='note-grid'><dt>App</dt><dd>CT.gov Probable ACT/FDAAA Debt dashboard</dd><dt>Data</dt><dd>249,507 eligible older closed interventional studies filtered into broad and strict U.S.-nexus proxy layers</dd><dt>Code</dt><dd><a href='https://github.com/mahmood726-cyber/ctgov-probable-act-fdaaa-debt'>https://github.com/mahmood726-cyber/ctgov-probable-act-fdaaa-debt</a></dd><dt>Version</dt><dd>1.0.0</dd></dl><div class='links'><a class='link-card' href='https://mahmood726-cyber.github.io/ctgov-probable-act-fdaaa-debt/dashboard.html'>Dashboard</a><a class='link-card' href='https://mahmood726-cyber.github.io/ctgov-probable-act-fdaaa-debt/e156-submission/paper.md'>Paper markdown</a><a class='link-card' href='https://mahmood726-cyber.github.io/ctgov-probable-act-fdaaa-debt/e156-submission/protocol.md'>Protocol markdown</a></div><h2 class='section-title'>Across The Series</h2><div class='series-grid'><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-industry-disclosure-gap/'><div class='series-card-kicker'>Industry</div><div class='series-card-title'>CT.gov Industry Disclosure Gap</div><p class='series-card-copy'>Industry-focused missing-results stock, sponsor backlogs, and structural sparsity inside CT.gov.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-sponsor-class-hiddenness/'><div class='series-card-kicker'>Sponsor Classes</div><div class='series-card-title'>CT.gov Sponsor-Class Hiddenness</div><p class='series-card-copy'>Sponsor-class comparisons on rate, stock, and structural hiddenness rather than one flattened ranking.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-phase-reporting-gap/'><div class='series-card-kicker'>Phases</div><div class='series-card-title'>CT.gov Phase Reporting Gap</div><p class='series-card-copy'>Phase-by-phase disclosure gaps showing how silence changes along the development pathway.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-structural-missingness/'><div class='series-card-kicker'>Structural</div><div class='series-card-title'>CT.gov Structural Missingness</div><p class='series-card-copy'>Field-level missingness across publication links, IPD statements, descriptions, and locations.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-evidence-visibility-gap/'><div class='series-card-kicker'>Visibility</div><div class='series-card-title'>CT.gov Evidence Visibility Gap</div><p class='series-card-copy'>Results-plus-publication visibility states showing how many older trials are fully visible, partly visible, or ghosted.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-completion-cohort-debt/'><div class='series-card-kicker'>Cohorts</div><div class='series-card-title'>CT.gov Completion Cohort Debt</div><p class='series-card-copy'>Completion-era reporting debt showing how older eligible cohorts drift on no-results and ghost-protocol rates.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-condition-hiddenness-map/'><div class='series-card-kicker'>Conditions</div><div class='series-card-title'>CT.gov Condition Hiddenness Map</div><p class='series-card-copy'>Keyword-classified therapeutic-area hiddenness mapping across common condition families.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-sponsor-backlog-concentration/'><div class='series-card-kicker'>Concentration</div><div class='series-card-title'>CT.gov Sponsor Backlog Concentration</div><p class='series-card-copy'>Concentration and inequality analysis showing how much unresolved stock sits inside a thin sponsor slice.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-rule-era-reporting-gap/'><div class='series-card-kicker'>Rule Eras</div><div class='series-card-title'>CT.gov Rule-Era Reporting Gap</div><p class='series-card-copy'>Policy-era comparisons across pre-FDAAA, FDAAA, and later CT.gov completion cohorts.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-publication-undercount-audit/'><div class='series-card-kicker'>PubMed Audit</div><div class='series-card-title'>CT.gov Publication Undercount Audit</div><p class='series-card-copy'>Sample-based external PubMed NCT audit testing how often CT.gov no-link records hide an external paper trail.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-oncology-hiddenness/'><div class='series-card-kicker'>Oncology</div><div class='series-card-title'>CT.gov Oncology Hiddenness</div><p class='series-card-copy'>Oncology-specific CT.gov hiddenness showing where cancer-trial stock, phases, and sponsors still go quiet.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-cardiovascular-hiddenness/'><div class='series-card-kicker'>Cardiovascular</div><div class='series-card-title'>CT.gov Cardiovascular Hiddenness</div><p class='series-card-copy'>Cardiovascular CT.gov hiddenness showing how heart and vascular studies remain quiet across major phases and sponsors.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-metabolic-hiddenness/'><div class='series-card-kicker'>Metabolic</div><div class='series-card-title'>CT.gov Metabolic Hiddenness</div><p class='series-card-copy'>Metabolic CT.gov hiddenness across obesity, diabetes, and related trial portfolios with large late-phase and NA stock.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-enrollment-size-gap/'><div class='series-card-kicker'>Size</div><div class='series-card-title'>CT.gov Enrollment-Size Gap</div><p class='series-card-copy'>Enrollment-size gradients showing how older small trials remain much quieter than larger registered studies.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-geography-scale-visibility/'><div class='series-card-kicker'>Geography</div><div class='series-card-title'>CT.gov Geography-Scale Visibility</div><p class='series-card-copy'>Site and country footprint analysis showing how larger trial geographies map onto much better public visibility.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-design-purpose-hiddenness/'><div class='series-card-kicker'>Purpose</div><div class='series-card-title'>CT.gov Design-Purpose Hiddenness</div><p class='series-card-copy'>Primary-purpose and allocation analysis showing which trial intents remain most obscured on CT.gov.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-completion-delay-debt/'><div class='series-card-kicker'>Delay</div><div class='series-card-title'>CT.gov Completion-Delay Debt</div><p class='series-card-copy'>Registration-to-completion delay analysis showing short-cycle studies carry the heaviest reporting debt.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-trial-architecture-gap/'><div class='series-card-kicker'>Architecture</div><div class='series-card-title'>CT.gov Trial-Architecture Gap</div><p class='series-card-copy'>Arm-count and intervention-count analysis showing simpler trial architectures are often the quietest.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-intervention-type-gap/'><div class='series-card-kicker'>Interventions</div><div class='series-card-title'>CT.gov Intervention-Type Gap</div><p class='series-card-copy'>Intervention-family analysis showing which declared treatment modalities remain quietest on older CT.gov records.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-country-reporting-map/'><div class='series-card-kicker'>Countries</div><div class='series-card-title'>CT.gov Country Reporting Map</div><p class='series-card-copy'>Named-country visibility analysis showing large geographic divides in older CT.gov reporting debt.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-stopped-trial-disclosure-gap/'><div class='series-card-kicker'>Stopped</div><div class='series-card-title'>CT.gov Stopped-Trial Disclosure Gap</div><p class='series-card-copy'>Final-status analysis showing how withdrawn, suspended, and terminated studies remain structurally quieter than completed trials.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-outcome-density-gap/'><div class='series-card-kicker'>Outcomes</div><div class='series-card-title'>CT.gov Outcome-Density Gap</div><p class='series-card-copy'>Outcome-count and outcome-description analysis showing sparse protocols are often the quietest CT.gov segment.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-actual-field-discipline/'><div class='series-card-kicker'>Actual Fields</div><div class='series-card-title'>CT.gov Actual-Field Discipline</div><p class='series-card-copy'>Closed-study actual-field analysis showing missing actual dates and counts are a strong warning sign for opacity.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-us-vs-global-gap/'><div class='series-card-kicker'>US vs Global</div><div class='series-card-title'>CT.gov U.S. Versus Global Gap</div><p class='series-card-copy'>Geography-bucket analysis showing how U.S.-only, mixed, and non-U.S. portfolios diverge sharply on visibility.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-modality-sponsor-repeaters/'><div class='series-card-kicker'>Modality Sponsors</div><div class='series-card-title'>CT.gov Modality Sponsor Repeaters</div><p class='series-card-copy'>Intervention-family sponsor audit showing that repeat offenders change sharply once modality is held fixed.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-country-condition-hiddenness/'><div class='series-card-kicker'>Country x Condition</div><div class='series-card-title'>CT.gov Country-Condition Hiddenness</div><p class='series-card-copy'>Country-by-condition splits showing how disease-specific visibility changes once specific national footprints are named.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-disease-geography-gap/'><div class='series-card-kicker'>Disease Geography</div><div class='series-card-title'>CT.gov Disease Geography Gap</div><p class='series-card-copy'>Disease-family geography buckets showing how oncology, cardiovascular, and metabolic studies diverge by U.S. participation.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-condition-sponsor-repeaters/'><div class='series-card-kicker'>Condition Sponsors</div><div class='series-card-title'>CT.gov Condition Sponsor Repeaters</div><p class='series-card-copy'>Condition-family sponsor audit showing who carries the biggest hiddenness stock within oncology, cardiovascular, and metabolic studies.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-country-sponsor-repeaters/'><div class='series-card-kicker'>Country Sponsors</div><div class='series-card-title'>CT.gov Country Sponsor Repeaters</div><p class='series-card-copy'>Country-linked sponsor audit showing how leading repeaters differ across U.S., China, Egypt, Poland, Australia, and Japan study footprints.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-us-vs-exus-sponsor-classes/'><div class='series-card-kicker'>US vs Ex-US</div><div class='series-card-title'>CT.gov U.S. Versus Ex-U.S. Sponsor Classes</div><p class='series-card-copy'>U.S.-presence sponsor-class analysis showing how any-U.S. and no-U.S. portfolios diverge sharply on hiddenness.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-industry-family-repeaters/'><div class='series-card-kicker'>Industry Families</div><div class='series-card-title'>CT.gov Industry Family Repeaters</div><p class='series-card-copy'>Industry-by-intervention audit showing that repeat-offender sponsors change sharply once modality and geography are held fixed.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-risk-adjusted-hiddenness/'><div class='series-card-kicker'>Adjusted</div><div class='series-card-title'>CT.gov Risk-Adjusted Hiddenness</div><p class='series-card-copy'>Study-mix-adjusted hiddenness showing which sponsor classes, geographies, and sponsors remain worse than expected.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-overdue-results-clock/'><div class='series-card-kicker'>Clock</div><div class='series-card-title'>CT.gov Overdue Results Clock</div><p class='series-card-copy'>Time-since-due analysis showing how unresolved CT.gov results debt ages across cohorts, phases, and sponsor classes.</p></a><a class='series-card' href='https://mahmood726-cyber.github.io/ctgov-publication-index-gap/'><div class='series-card-kicker'>Index Gap</div><div class='series-card-title'>CT.gov Publication Index Gap</div><p class='series-card-copy'>Sample-based exact-ID audit showing how much no-link CT.gov silence is an indexing and linkage gap rather than a PubMed-only miss.</p></a></div></aside>
-    </div>
-    <div class="footer">
-      <a href="https://github.com/mahmood726-cyber/ctgov-probable-act-fdaaa-debt">Source on GitHub</a> |
-      <a href="https://mahmood726-cyber.github.io/ctgov-probable-act-fdaaa-debt/">Project home</a> |
-      <a href="https://mahmood726-cyber.github.io/ctgov-probable-act-fdaaa-debt/dashboard.html">Dashboard</a>
-    </div>
-  </div>
+  </footer>
+
+</div>
+
+<script>
+const D = {
+  "title": "CT.gov Probable ACT/FDAAA Debt",
+  "summary": "A standalone E156 project on how large, old, and distributed the likely U.S.-nexus regulated backlog still is once older CT.gov studies are filtered through conservative proxy layers.",
+  "type": "methods",
+  "primary_estimand": "Missing-results rate and overdue debt within conservative U.S.-nexus ACT-style proxy layers",
+  "study_count": null,
+  "participant_count": null,
+  "version": "1.0.0",
+  "date": "2026-03-29",
+  "certainty": "",
+  "app": "CT.gov Probable ACT/FDAAA Debt dashboard",
+  "data": "249,507 eligible older closed interventional studies filtered into broad and strict U.S.-nexus proxy layers",
+  "code": "https://github.com/mahmood726-cyber/ctgov-probable-act-fdaaa-debt",
+  "doi": "",
+  "protocol": "",
+  "source_article": "",
+  "body": "How large is the likely U.S.-nexus reporting debt once older CT.gov studies are filtered through strict and broad ACT-style sensitivity layers? We analysed 249,507 eligible older closed interventional studies from the March 29, 2026 full-registry snapshot. We created three proxy layers using recorded U.S. locations, intervention families, and phase exclusions within older closed interventional records: broad U.S. nexus, drug/bio non-phase1, and strict drug/bio/device U.S. nexus. The strict proxy contains 58,598 older studies, with 18,475 missing-results studies and a 31.5 percent no-results rate. Debt is still old inside that supposedly regulated core: mean unresolved time is 10.92 years beyond the two-year mark, and Pre-FDAAA strict-proxy cohorts remain 87.0 percent unresolved even after U.S.-nexus filtering. The regulatory backlog therefore sits far below the raw all-study rate but remains large, old, and institutionally distributed across OTHER, INDUSTRY, and government-linked slices. These layers are conservative proxies built from registry-visible fields, not formal ACT or FDAAA legal determinations or enforceability judgments.",
+  "validation": {
+    "status": "fail",
+    "checks": [
+      {
+        "name": "single paragraph",
+        "ok": true,
+        "detail": "Body must not contain blank-line paragraph breaks."
+      },
+      {
+        "name": "sentence count",
+        "ok": true,
+        "detail": "Found 7 sentences."
+      },
+      {
+        "name": "word count",
+        "ok": true,
+        "detail": "Found 156 words."
+      },
+      {
+        "name": "no headings",
+        "ok": true,
+        "detail": "No markdown headings allowed in body."
+      },
+      {
+        "name": "no links",
+        "ok": true,
+        "detail": "No links or DOI links allowed in body."
+      },
+      {
+        "name": "result sentence has interval",
+        "ok": true,
+        "detail": "Sentence 4 should include a quantitative result such as a percentage, count, or interval."
+      },
+      {
+        "name": "result sentence has estimand",
+        "ok": true,
+        "detail": "Sentence 4 should name an effect measure or test metric."
+      },
+      {
+        "name": "boundary sentence present",
+        "ok": false,
+        "detail": "Sentence 7 should express a limitation, harm, or scope boundary."
+      }
+    ]
+  },
+  "sentences": [
+    {
+      "role": "Question",
+      "text": "How large is the likely U.S.-nexus reporting debt once older CT.gov studies are filtered through strict and broad ACT-style sensitivity layers?"
+    },
+    {
+      "role": "Dataset",
+      "text": "We analysed 249,507 eligible older closed interventional studies from the March 29, 2026 full-registry snapshot."
+    },
+    {
+      "role": "Method",
+      "text": "We created three proxy layers using recorded U.S. locations, intervention families, and phase exclusions within older closed interventional records: broad U.S. nexus, drug/bio non-phase1, and strict drug/bio/device U.S. nexus."
+    },
+    {
+      "role": "Primary result",
+      "text": "The strict proxy contains 58,598 older studies, with 18,475 missing-results studies and a 31.5 percent no-results rate."
+    },
+    {
+      "role": "Secondary result",
+      "text": "Debt is still old inside that supposedly regulated core: mean unresolved time is 10.92 years beyond the two-year mark, and Pre-FDAAA strict-proxy cohorts remain 87.0 percent unresolved even after U.S.-nexus filtering."
+    },
+    {
+      "role": "Interpretation",
+      "text": "The regulatory backlog therefore sits far below the raw all-study rate but remains large, old, and institutionally distributed across OTHER, INDUSTRY, and government-linked slices."
+    },
+    {
+      "role": "Boundary",
+      "text": "These layers are conservative proxies built from registry-visible fields, not formal ACT or FDAAA legal determinations or enforceability judgments."
+    }
+  ],
+  "primary_plot": {},
+  "studies": [],
+  "search_strategy": {},
+  "prisma": {},
+  "included_papers": [],
+  "analysis_modules": [],
+  "author": "Mahmood Ahmad",
+  "affiliation": "Tahir Heart Institute",
+  "email": "mahmood.ahmad2@nhs.net",
+  "slug": "ctgov-probable-act-fdaaa-debt",
+  "references": [
+    "ClinicalTrials.gov API v2. National Library of Medicine. Accessed March 29, 2026.",
+    "DeVito NJ, Bacon S, Goldacre B. Compliance with legal requirement to report clinical trial results on ClinicalTrials.gov: a cohort study. Lancet. 2020;395(10221):361-369.",
+    "Zarin DA, Tse T, Williams RJ, Carr S. Trial reporting in ClinicalTrials.gov. N Engl J Med. 2016;375(20):1998-2004."
+  ],
+  "_assets": [
+    "dashboard.html"
+  ],
+  "_disclosure": "This work represents a compiler-generated evidence micro-publication. AI is used as a constrained synthesis engine operating on structured inputs and predefined rules, rather than as an autonomous author. All results and text were reviewed and verified by the author, who takes full responsibility for the content."
+};
+
+const ROLES = [
+  {key:"question",      label:"S1 Question",      color:"#2E86C1"},
+  {key:"dataset",        label:"S2 Dataset",        color:"#28B463"},
+  {key:"method",         label:"S3 Method",         color:"#7D3C98"},
+  {key:"result",         label:"S4 Primary Result", color:"#CB4335"},
+  {key:"robustness",     label:"S5 Robustness",     color:"#D68910"},
+  {key:"interpretation", label:"S6 Interpretation", color:"#148F77"},
+  {key:"boundary",       label:"S7 Boundary",       color:"#85929E"}
+];
+
+function esc(s){const d=document.createElement("div");d.textContent=String(s??"");return d.innerHTML}
+
+// ── Title + byline ──
+document.getElementById("title").textContent = D.title || "Untitled";
+document.title = (D.title||"E156") + " \u2014 E156 Interactive Paper";
+
+const parts = [];
+if(D.author) parts.push(esc(D.author));
+if(D.affiliation) parts.push(esc(D.affiliation));
+if(D.email) parts.push('<a href="mailto:'+esc(D.email)+'">'+esc(D.email)+'</a>');
+if(D.date) parts.push(esc(D.date));
+document.getElementById("byline").innerHTML = parts.join(" &middot; ");
+
+// ── Body with sentence highlighting ──
+const body = D.body || "";
+const sents = D.sentences || [];
+const bodyEl = document.getElementById("body");
+
+if(sents.length === 7){
+  bodyEl.innerHTML = sents.map((s,i) => {
+    const txt = typeof s === "string" ? s : (s.text || "");
+    return '<span class="s" tabindex="0" role="note" aria-label="'+ROLES[i].label+'" data-r="'+(i+1)+'" data-label="'+ROLES[i].label+'">'+esc(txt)+'</span>';
+  }).join(" ");
+} else {
+  bodyEl.textContent = body;
+}
+
+// ── Sentence map ──
+const smap = document.getElementById("smap");
+ROLES.forEach((r,i) => {
+  const seg = document.createElement("div");
+  seg.className = "smap-seg";
+  seg.style.background = r.color;
+  seg.textContent = r.label.split(" ")[0];
+  seg.title = r.label;
+  seg.setAttribute("tabindex","0");
+  seg.setAttribute("role","button");
+  seg.setAttribute("aria-label",r.label);
+  const activate = () => {
+    const s = bodyEl.querySelector('.s[data-r="'+(i+1)+'"]');
+    if(s){s.scrollIntoView({behavior:"smooth",block:"center"});
+      bodyEl.querySelectorAll(".s").forEach(x=>x.style.background="");
+      const colors = ["","rgba(46,134,193,.15)","rgba(40,180,99,.15)","rgba(125,60,152,.15)",
+        "rgba(203,67,53,.18)","rgba(214,137,16,.15)","rgba(20,143,119,.15)","rgba(133,146,158,.15)"];
+      s.style.background = colors[i+1] || "";
+    }
+  };
+  seg.addEventListener("click", activate);
+  seg.addEventListener("keydown", e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();activate();}});
+  smap.appendChild(seg);
+});
+
+// ── Figures from assets ──
+const assets = D._assets || [];
+const imgAssets = assets.filter(a => /\.(png|jpg|jpeg|svg|gif|webp)$/i.test(a));
+if(imgAssets.length > 0){
+  document.getElementById("figures-section").style.display = "";
+  const grid = document.getElementById("fig-grid");
+  imgAssets.forEach(a => {
+    const card = document.createElement("div");
+    card.className = "fig-card";
+    const img = document.createElement("img");
+    img.src = "assets/" + a;
+    img.alt = a.replace(/[-_]/g," ").replace(/\.\w+$/,"");
+    img.loading = "lazy";
+    card.appendChild(img);
+    const cap = document.createElement("div");
+    cap.className = "fig-caption";
+    cap.textContent = a.replace(/[-_]/g," ").replace(/\.\w+$/,"");
+    card.appendChild(cap);
+    grid.appendChild(card);
+  });
+}
+
+// ── App link ──
+const htmlAssets = assets.filter(a => /\.html$/i.test(a) && a !== "index.html");
+if(htmlAssets.length > 0){
+  document.getElementById("app-section").style.display = "";
+  const btn = document.getElementById("app-btn");
+  btn.href = "assets/" + htmlAssets[0];
+  btn.rel = "noopener noreferrer";
+  btn.textContent = "Open Interactive App \u2192 " + htmlAssets[0].replace(/[-_]/g," ").replace(/\.html$/,"");
+}
+
+// ── Notes ──
+const notes = D.notes || {};
+const noteFields = [
+  ["Type", D.type], ["Primary Estimand", D.primary_estimand],
+  ["App", notes.app], ["Data", notes.data], ["Code", notes.code],
+  ["DOI", notes.doi], ["Version", notes.version || D.version],
+  ["Certainty", notes.certainty || D.certainty],
+  ["Validation", notes.validation || (D.validation||{}).status]
+];
+const ng = document.getElementById("notes-grid");
+noteFields.forEach(([label, val]) => {
+  if(!val) return;
+  const dt = document.createElement("dt");
+  dt.textContent = label;
+  ng.appendChild(dt);
+  const dd = document.createElement("dd");
+  if(/^https?:/.test(val)){
+    const a = document.createElement("a");
+    a.href = val; a.textContent = val; a.target = "_blank"; a.rel = "noopener";
+    dd.appendChild(a);
+  } else {
+    dd.textContent = val;
+  }
+  ng.appendChild(dd);
+});
+
+// ── References ──
+const refs = D.references || [];
+if(refs.length > 0){
+  document.getElementById("refs-section").style.display = "";
+  const ol = document.getElementById("refs-list");
+  refs.forEach(r => {
+    const li = document.createElement("li");
+    li.textContent = r;
+    ol.appendChild(li);
+  });
+}
+
+// ── Disclosure ──
+const disc = D._disclosure || "";
+if(disc){
+  document.getElementById("disclosure").style.display = "";
+  document.getElementById("disclosure-text").textContent = disc;
+}
+
+// ── Footer ──
+const wc = body.split(/\s+/).filter(Boolean).length;
+document.getElementById("wc").textContent = wc;
+document.getElementById("wc-check").textContent = wc === 156 ? "\u2713" : "\u2717 ("+wc+")";
+
+// ── Actions ──
+function copyBody(e){
+  navigator.clipboard.writeText(body).then(()=>{
+    const b=e&&e.target?e.target:document.querySelector(".actions button");
+    b.textContent="Copied!";setTimeout(()=>b.textContent="Copy",1500);
+  });
+}
+function downloadJSON(){
+  const b=new Blob([JSON.stringify(D,null,2)],{type:"application/json"});
+  const u=URL.createObjectURL(b);
+  const a=document.createElement("a");
+  a.href=u;a.download=(D.slug||"e156")+".json";
+  document.body.appendChild(a);a.click();
+  document.body.removeChild(a);URL.revokeObjectURL(u);
+}
+</script>
 </body>
 </html>

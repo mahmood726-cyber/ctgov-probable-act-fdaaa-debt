@@ -1,0 +1,96 @@
+{
+  "title": "CT.gov Probable ACT/FDAAA Debt",
+  "slug": "ctgov-probable-act-fdaaa-debt",
+  "author": "Mahmood Ahmad",
+  "date": "2026-03-29",
+  "body": "How large is the likely U.S.-nexus reporting debt once older CT.gov studies are filtered through strict and broad ACT-style sensitivity layers? We analysed 249,507 eligible older closed interventional studies from the March 29, 2026 full-registry snapshot. We created three proxy layers using recorded U.S. locations, intervention families, and phase exclusions within older closed interventional records: broad U.S. nexus, drug/bio non-phase1, and strict drug/bio/device U.S. nexus. The strict proxy contains 58,598 older studies, with 18,475 missing-results studies and a 31.5 percent no-results rate. Debt is still old inside that supposedly regulated core: mean unresolved time is 10.92 years beyond the two-year mark, and Pre-FDAAA strict-proxy cohorts remain 87.0 percent unresolved even after U.S.-nexus filtering. The regulatory backlog therefore sits far below the raw all-study rate but remains large, old, and institutionally distributed across OTHER, INDUSTRY, and government-linked slices. These layers are conservative proxies built from registry-visible fields, not formal ACT or FDAAA legal determinations or enforceability judgments.",
+  "word_count": 156,
+  "sentence_count": 7,
+  "sentences": [
+    {
+      "role": "Question",
+      "text": "How large is the likely U.S.-nexus reporting debt once older CT.gov studies are filtered through strict and broad ACT-style sensitivity layers?"
+    },
+    {
+      "role": "Dataset",
+      "text": "We analysed 249,507 eligible older closed interventional studies from the March 29, 2026 full-registry snapshot."
+    },
+    {
+      "role": "Method",
+      "text": "We created three proxy layers using recorded U.S. locations, intervention families, and phase exclusions within older closed interventional records: broad U.S. nexus, drug/bio non-phase1, and strict drug/bio/device U.S. nexus."
+    },
+    {
+      "role": "Primary result",
+      "text": "The strict proxy contains 58,598 older studies, with 18,475 missing-results studies and a 31.5 percent no-results rate."
+    },
+    {
+      "role": "Secondary result",
+      "text": "Debt is still old inside that supposedly regulated core: mean unresolved time is 10.92 years beyond the two-year mark, and Pre-FDAAA strict-proxy cohorts remain 87.0 percent unresolved even after U.S.-nexus filtering."
+    },
+    {
+      "role": "Interpretation",
+      "text": "The regulatory backlog therefore sits far below the raw all-study rate but remains large, old, and institutionally distributed across OTHER, INDUSTRY, and government-linked slices."
+    },
+    {
+      "role": "Boundary",
+      "text": "These layers are conservative proxies built from registry-visible fields, not formal ACT or FDAAA legal determinations or enforceability judgments."
+    }
+  ],
+  "notes": {
+    "app": "CT.gov Probable ACT/FDAAA Debt dashboard",
+    "data": "249,507 eligible older closed interventional studies filtered into broad and strict U.S.-nexus proxy layers",
+    "code": "https://github.com/mahmood726-cyber/ctgov-probable-act-fdaaa-debt",
+    "doi": "",
+    "version": "1.0.0",
+    "date": "2026-03-29",
+    "validation": "FULL REGISTRY RUN"
+  },
+  "type": "methods",
+  "primary_estimand": "Missing-results rate and overdue debt within conservative U.S.-nexus ACT-style proxy layers",
+  "validation": {
+    "status": "fail",
+    "checks": [
+      {
+        "name": "single paragraph",
+        "ok": true,
+        "detail": "Body must not contain blank-line paragraph breaks."
+      },
+      {
+        "name": "sentence count",
+        "ok": true,
+        "detail": "Found 7 sentences."
+      },
+      {
+        "name": "word count",
+        "ok": true,
+        "detail": "Found 156 words."
+      },
+      {
+        "name": "no headings",
+        "ok": true,
+        "detail": "No markdown headings allowed in body."
+      },
+      {
+        "name": "no links",
+        "ok": true,
+        "detail": "No links or DOI links allowed in body."
+      },
+      {
+        "name": "result sentence has interval",
+        "ok": true,
+        "detail": "Sentence 4 should include a quantitative result such as a percentage, count, or interval."
+      },
+      {
+        "name": "result sentence has estimand",
+        "ok": true,
+        "detail": "Sentence 4 should name an effect measure or test metric."
+      },
+      {
+        "name": "boundary sentence present",
+        "ok": false,
+        "detail": "Sentence 7 should express a limitation, harm, or scope boundary."
+      }
+    ]
+  },
+  "schema": "e156-v0.2"
+}

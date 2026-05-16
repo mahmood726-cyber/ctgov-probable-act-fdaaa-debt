@@ -3,7 +3,7 @@
   "slug": "ctgov-probable-act-fdaaa-debt",
   "author": "Mahmood Ahmad",
   "date": "2026-03-29",
-  "path": "C:\\Projects\\ctgov-probable-act-fdaaa-debt",
+  "path": "C:\\Projects\\ctgov-analyses/ctgov-probable-act-fdaaa-debt",
   "type": "methods",
   "primary_estimand": "Missing-results rate and overdue debt within conservative U.S.-nexus ACT-style proxy layers",
   "summary": "A standalone E156 project on how large, old, and distributed the likely U.S.-nexus regulated backlog still is once older CT.gov studies are filtered through conservative proxy layers.",
@@ -48,10 +48,11 @@
     "validation": "FULL REGISTRY RUN"
   },
   "affiliation": "Tahir Heart Institute",
-  "email": "author@example.com",
+  "email": "mahmood.ahmad2@nhs.net",
   "references": [
     "ClinicalTrials.gov API v2. National Library of Medicine. Accessed March 29, 2026.",
     "DeVito NJ, Bacon S, Goldacre B. Compliance with legal requirement to report clinical trial results on ClinicalTrials.gov: a cohort study. Lancet. 2020;395(10221):361-369.",
     "Zarin DA, Tse T, Williams RJ, Carr S. Trial reporting in ClinicalTrials.gov. N Engl J Med. 2016;375(20):1998-2004."
-  ]
+  ],
+  "submitted": false
 }
