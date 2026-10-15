@@ -1,3 +1,5 @@
+> **Methodology correction — 15 October 2026:** These archived ACT-style registry proxy counts are **not** adjudicated numbers of trials legally subject to FDAAA/42 CFR Part 11 and **not** demonstrated reporting violations. US location, intervention type, phase and one-year elapsed registry time are insufficient to determine ACT status or the operative filing deadline. Applicable rule era, FDA jurisdiction, actual completion, certification, extensions and other exceptions require study-level review. The historical figures below have not been recalculated. See [README.md](README.md) for the new per-NCT screening logic and explicit `UNDETERMINED` legal classifications.
+
 # E156 Protocol — `ctgov-probable-act-fdaaa-debt`
 
 This repository is the source code and dashboard backing an E156 micro-paper on the [E156 Student Board](https://mahmood726-cyber.github.io/e156/students.html).
