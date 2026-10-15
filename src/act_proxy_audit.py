@@ -13,7 +13,7 @@ import gzip
 import hashlib
 import json
 import re
-from datetime import date, timedelta
+from datetime import date
 from pathlib import Path
 
 NCT_PATTERN = re.compile(r"^NCT\d{8}$")
@@ -40,6 +40,16 @@ def exact_date(value):
         return date.fromisoformat(value)
     except ValueError:
         return None
+
+
+def one_calendar_year_after(start: date) -> date:
+    """Use a calendar-year anniversary, not a fixed 365-day approximation."""
+    try:
+        return start.replace(year=start.year + 1)
+    except ValueError:
+        # A Feb 29 completion does not have a Feb 29 anniversary the next year;
+        # March 1 is a conservative research screen, NOT a legal deadline.
+        return date(start.year + 1, 3, 1)
 
 
 def bool_or_unknown(value):
@@ -80,11 +90,14 @@ def review_record(study, *, as_of: date):
     elif has_results is None:
         gap = None
         clock = "UNASSESSABLE_RESULTS_STATUS_UNKNOWN"
+    elif results_post_date and results_post_date > as_of:
+        gap = None
+        clock = "UNASSESSABLE_RESULTS_POSTED_AFTER_AS_OF"
     elif has_results:
         gap = False
         clock = "RESULTS_POSTED_IN_REGISTRY"
     else:
-        gap = elapsed >= 365
+        gap = as_of >= one_calendar_year_after(pcd)
         clock = "ONE_YEAR_ELAPSED_NO_POSTED_RESULTS" if gap else "UNDER_ONE_YEAR_NO_POSTED_RESULTS"
 
     fda_drug = bool_or_unknown(oversight.get("isFdaRegulatedDrug"))
@@ -131,6 +144,8 @@ def review_record(study, *, as_of: date):
         caution.append("posted_results_indicator_missing")
     if results_post_date and not has_results:
         caution.append("posted_results_date_conflicts_with_indicator")
+    if results_post_date and results_post_date > as_of:
+        caution.append("reported_results_first_post_date_after_as_of")
 
     priority = (
         "REVIEW_CANDIDATE" if gap is True
@@ -160,7 +175,7 @@ def review_record(study, *, as_of: date):
         "act_eligibility": "UNDETERMINED",
         "results_legal_overdue_status": "UNDETERMINED",
         "assumptions": (
-            "A 365-day registry gap is only a screen. ACT jurisdiction, "
+            "One-calendar-year registry gap is only a screen. ACT jurisdiction, "
             "responsible party, version-specific law, extensions, "
             "certifications, delays and legal reporting deadlines "
             "require case-by-case adjudication."
